@@ -6,7 +6,7 @@ namespace BotNews\Models;
  * Class Page
  * @package BotNews\Models
  */
-class Page {
+class Page extends Base {
 	/**
 	 * @var int
 	 */
@@ -21,19 +21,6 @@ class Page {
 	 * @var Post[]
 	 */
 	private $posts;
-
-	/**
-	 * Page constructor.
-	 *
-	 * @param int $paged
-	 * @param int $pagedFinal
-	 * @param Post[] $posts
-	 */
-	public function __construct( $paged, $pagedFinal, array $posts ) {
-		$this->paged      = $paged;
-		$this->pagedFinal = $pagedFinal;
-		$this->posts      = $posts;
-	}
 
 	/**
 	 * @return int
