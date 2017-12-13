@@ -3,16 +3,16 @@
 namespace BotNews\Sites;
 
 use BotNews\BotNews;
+use BotNews\Client;
 use BotNews\Models\Page;
 use BotNews\Models\Post;
 use Symfony\Component\DomCrawler\Crawler;
 
-class La10 extends BotNews {
-
+class La10 extends Client implements BotNews {
 	/**
 	 * @var string
 	 */
-	public $siteUrl = 'http://la10.rpp.pe';
+	protected $siteUrl = 'http://la10.rpp.pe';
 
 	/**
 	 * @param mixed $id
@@ -20,11 +20,7 @@ class La10 extends BotNews {
 	 * @return Post
 	 */
 	public function getPost( $id ) {
-
-		/** @var Crawler $crawler */
-		$crawler = self::request("{$this->siteUrl}/{$id}");
-		$json_ld = $crawler->filter('script[type="application/ld+json"]')->text();
-		$json_ld = json_decode($json_ld, TRUE);
+		$json_ld = parent::requestJsonLD("{$this->siteUrl}/{$id}");
 
 		return new Post(
 			$json_ld['alternativeHeadline'],
@@ -41,7 +37,7 @@ class La10 extends BotNews {
 	 */
 	public function getPage( $paged = 'futbol-peruano' ) {
 		/** @var Crawler $crawler */
-		$crawler = self::request("{$this->siteUrl}/feed/{$paged}");
+		$crawler = parent::requestSanitize("{$this->siteUrl}/feed/{$paged}");
 		$posts = $crawler->filter('item')->each(function ($node) {
 			/** @var Crawler $node */
 			return new Post(
