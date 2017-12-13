@@ -22,4 +22,13 @@ class Str {
 	static public function reduceDoubleSlashes($str) {
 		return preg_replace("#(^|[^:])//+#", "\\1/", $str);
 	}
+
+	/**
+	 * @param string $str
+	 *
+	 * @return array
+	 */
+	static public function explodeComa($str) {
+		return explode(',', $str);
+	}
 }
