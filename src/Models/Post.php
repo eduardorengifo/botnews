@@ -6,7 +6,12 @@ namespace BotNews\Models;
  * Class Post
  * @package BotNews\Models
  */
-class Post {
+class Post extends Base {
+	/**
+	 * @var Author
+	 */
+	private $author;
+
 	/**
 	 * @var string
 	 */
@@ -25,21 +30,40 @@ class Post {
 	/**
 	 * @var string
 	 */
+	private $datePublished;
+
+	/**
+	 * @var string
+	 */
+	private $dateModified;
+
+	/**
+	 * @var Image
+	 */
 	private $thumbnail;
 
 	/**
-	 * Post constructor.
-	 *
-	 * @param string $title
-	 * @param string $description
-	 * @param string $content
-	 * @param string $thumbnail
+	 * @var Image[]
 	 */
-	public function __construct( $title, $description, $content, $thumbnail ) {
-		$this->title       = $title;
-		$this->description = $description;
-		$this->content     = $content;
-		$this->thumbnail   = $thumbnail;
+	private $media;
+
+	/**
+	 * @var string[]
+	 */
+	private $keywords;
+
+	/**
+	 * @return Author
+	 */
+	public function getAuthor() {
+		return $this->author;
+	}
+
+	/**
+	 * @param Author $author
+	 */
+	public function setAuthor( $author ) {
+		$this->author = $author;
 	}
 
 	/**
@@ -87,14 +111,70 @@ class Post {
 	/**
 	 * @return string
 	 */
+	public function getDatePublished() {
+		return $this->datePublished;
+	}
+
+	/**
+	 * @param string $datePublished
+	 */
+	public function setDatePublished( $datePublished ) {
+		$this->datePublished = $datePublished;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDateModified() {
+		return $this->dateModified;
+	}
+
+	/**
+	 * @param string $dateModified
+	 */
+	public function setDateModified( $dateModified ) {
+		$this->dateModified = $dateModified;
+	}
+
+	/**
+	 * @return Image
+	 */
 	public function getThumbnail() {
 		return $this->thumbnail;
 	}
 
 	/**
-	 * @param string $thumbnail
+	 * @param Image $thumbnail
 	 */
 	public function setThumbnail( $thumbnail ) {
 		$this->thumbnail = $thumbnail;
+	}
+
+	/**
+	 * @return Image[]
+	 */
+	public function getMedia() {
+		return $this->media;
+	}
+
+	/**
+	 * @param Image[] $media
+	 */
+	public function setMedia( $media ) {
+		$this->media = $media;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getKeywords() {
+		return $this->keywords;
+	}
+
+	/**
+	 * @param string[] $keywords
+	 */
+	public function setKeywords( $keywords ) {
+		$this->keywords = $keywords;
 	}
 }
