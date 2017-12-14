@@ -28,7 +28,32 @@ class Str {
 	 *
 	 * @return array
 	 */
+	static public function explodeSlash($str) {
+		return explode('/', $str);
+	}
+
+	/**
+	 * @param string $str
+	 *
+	 * @return array
+	 */
 	static public function explodeComa($str) {
 		return explode(',', $str);
+	}
+
+	/**
+	 * @param string $pathOrUrl
+	 * @param string $urlBase
+	 *
+	 * @return string
+	 */
+	static public function createUrlValid( $pathOrUrl, $urlBase )
+	{
+		if ( filter_var($pathOrUrl, FILTER_VALIDATE_URL) )
+		{
+			return $pathOrUrl;
+		}
+
+		return self::reduceDoubleSlashes("{$urlBase}/{$pathOrUrl}");
 	}
 }
