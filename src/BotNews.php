@@ -11,11 +11,11 @@ use BotNews\Models\Post;
  */
 interface BotNews {
 	/**
-	 * @param mixed $id
+	 * @param string $slug
 	 *
 	 * @return Post
 	 */
-	public function getPost( $id );
+	public function getPost( $slug );
 
 	/**
 	 * @param mixed $paged
