@@ -5,6 +5,10 @@ namespace BotNews;
 use BotNews\Helpers\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * Class Client
+ * @package BotNews
+ */
 class Client extends \Goutte\Client {
 	/**
 	 * @var string
