@@ -10,7 +10,32 @@ use PHPUnit\Framework\TestCase;
  * Class PageTest
  * @package Tests\Models
  */
-class PageTest extends TestCase {
+class PageTest extends TestCase
+{
+	/**
+	 * @var string
+	 */
+	private $url;
+
+	/**
+	 * @var string
+	 */
+	private $slug;
+
+	/**
+	 * @var int
+	 */
+	private $paged;
+
+	/**
+	 * @var int
+	 */
+	private $pagedFinal;
+
+	/**
+	 * @var Post[]
+	 */
+	private $posts;
 
 	/**
 	 * @var Page
@@ -18,49 +43,49 @@ class PageTest extends TestCase {
 	private $page;
 
 	/**
-	 * PageTest constructor.
-	 *
-	 * @param null $name
-	 * @param array $data
-	 * @param string $dataName
+	 * @return void
 	 */
-	public function __construct( $name = null, array $data = [], $dataName = '' ) {
-		parent::__construct( $name, $data, $dataName );
+	public function setUp()
+	{
+		parent::setUp();
 
-		$posts = [
-			new Post(
-				'Title 1',
-				'Description 1',
-				'Content 1',
-				'Thumbnail 1'
-			),
-			new Post(
-				'Title 2',
-				'Description 2',
-				'Content 2',
-				'Thumbnail 2'
-			),
-			new Post(
-				'Title 3',
-				'Description 3',
-				'Content 3',
-				'Thumbnail 3'
-			)
-		];
+		$this->paged = 1;
+		$this->pagedFinal = 1;
+		$siteUrl = 'https://site.com';
+		$this->slug = '/page';
+		$this->url = $siteUrl . $this->slug;
 
-		$this->page = new Page(
-			1,
-			100,
-			$posts
-		);
+		$this->posts = array_map( function ( $num ) use ( $siteUrl ) {
+			$url = "{$siteUrl}/$num";
+			$post = new Post($url);
+			$post->setTitle("Title {$num}");
+			return $post;
+		}, range( 1, 10 ) );
+
+		$page = new Page($this->url);
+		$page->setPaged($this->paged);
+		$page->setPagedFinal($this->pagedFinal);
+		$page->setPosts($this->posts);
+		$this->page = $page;
+	}
+
+	/**
+	 * return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
 	}
 
 	/** @test */
 	public function testCanBeCreatedPage()
 	{
-		$this->assertInstanceOf(Page::class, $this->page);
-		$this->assertEquals(1, $this->page->getPaged());
-		$this->assertEquals(100, $this->page->getPagedFinal());
-		$this->assertInstanceOf(Post::class, $this->page->getPosts()[0]);
+		$this->assertInstanceOf( Page::class, $this->page );
+		$this->assertInstanceOf( Post::class, $this->page->getPosts()[0] );
+
+		$this->assertEquals( $this->paged, $this->page->getPaged() );
+		$this->assertEquals( $this->pagedFinal, $this->page->getPagedFinal() );
+		$this->assertEquals( $this->url, $this->page->getUrl() );
+		$this->assertEquals( $this->slug, $this->page->getSlug() );
 	}
 }
