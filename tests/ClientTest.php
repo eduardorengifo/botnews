@@ -6,6 +6,10 @@ use BotNews\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * Class ClientTest
+ * @package Tests
+ */
 class ClientTest extends TestCase
 {
 	/**
