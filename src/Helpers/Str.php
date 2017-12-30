@@ -2,7 +2,8 @@
 
 namespace BotNews\Helpers;
 
-class Str {
+class Str
+{
 	/**
 	 * Reduce Double Slashes
 	 *
@@ -19,8 +20,9 @@ class Str {
 	 *
 	 * @return	string
 	 */
-	static public function reduceDoubleSlashes($str) {
-		return preg_replace("#(^|[^:])//+#", "\\1/", $str);
+	static public function reduceDoubleSlashes( $str )
+	{
+		return preg_replace( "#(^|[^:])//+#", "\\1/", $str );
 	}
 
 	/**
@@ -28,8 +30,9 @@ class Str {
 	 *
 	 * @return array
 	 */
-	static public function explodeSlash($str) {
-		return explode('/', $str);
+	static public function explodeSlash( $str )
+	{
+		return explode( '/', $str );
 	}
 
 	/**
@@ -37,8 +40,9 @@ class Str {
 	 *
 	 * @return array
 	 */
-	static public function explodeComa($str) {
-		return explode(',', $str);
+	static public function explodeComa( $str )
+	{
+		return explode( ',', $str );
 	}
 
 	/**
@@ -49,8 +53,7 @@ class Str {
 	 */
 	static public function createUrlValid( $pathOrUrl, $urlBase )
 	{
-		if ( filter_var($pathOrUrl, FILTER_VALIDATE_URL) )
-		{
+		if ( filter_var( $pathOrUrl, FILTER_VALIDATE_URL ) ) {
 			return $pathOrUrl;
 		}
 

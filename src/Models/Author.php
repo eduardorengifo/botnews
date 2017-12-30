@@ -6,7 +6,8 @@ namespace BotNews\Models;
  * Class Author
  * @package BotNews\Models
  */
-class Author extends Base {
+class Author extends Base
+{
 	/**
 	 * @var string
 	 */
@@ -20,28 +21,32 @@ class Author extends Base {
 	/**
 	 * @return string
 	 */
-	public function getName() {
+	public function getName()
+	{
 		return $this->name;
 	}
 
 	/**
 	 * @param string $name
 	 */
-	public function setName( $name ) {
+	public function setName( $name )
+	{
 		$this->name = $name;
 	}
 
 	/**
 	 * @return Image
 	 */
-	public function getLogo() {
+	public function getLogo()
+	{
 		return $this->logo;
 	}
 
 	/**
 	 * @param Image $logo
 	 */
-	public function setLogo( $logo ) {
+	public function setLogo( $logo )
+	{
 		$this->logo = $logo;
 	}
 }

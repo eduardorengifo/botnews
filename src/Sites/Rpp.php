@@ -15,7 +15,8 @@ use Symfony\Component\DomCrawler\Crawler;
  * Class Rpp
  * @package BotNews\Sites
  */
-class Rpp extends Client implements BotNews {
+class Rpp extends Client implements BotNews
+{
 	/**
 	 * @var string
 	 */
@@ -26,10 +27,11 @@ class Rpp extends Client implements BotNews {
 	 *
 	 * @return Post
 	 */
-	public function getPost( $slug ) {
+	public function getPost( $slug )
+	{
 		$jsonLD = parent::requestJsonLD("{$this->siteUrl}/{$slug}");
 		$post = JsonLD::article( $jsonLD );
-		$post->setTitle(@$jsonLD['alternativeHeadline']);
+		$post->setTitle( @$jsonLD['alternativeHeadline'] );
 		return $post;
 	}
 
@@ -38,29 +40,30 @@ class Rpp extends Client implements BotNews {
 	 *
 	 * @return Page
 	 */
-	public function getPage( $paged = 'futbol' ) {
+	public function getPage( $paged = 'futbol' )
+	{
 		/** @var Crawler $crawler */
 		$crawler = parent::requestSanitize("{$this->siteUrl}/feed/{$paged}");
-		$posts = $crawler->filter('item')->each(function ($node) {
+		$posts = $crawler->filter('item')->each(function ( $node ) {
 			/** @var Crawler $node */
 			$title = $node->filter('title')->text();
 			$description = $node->filter('description')->text();
 			$href = $node->filter('link')->text();
 			$url = Str::createUrlValid( $href, $this->siteUrl );
 			$thumbnail_url = $node->filter('media|content')->attr('url');
-			$thumbnail = new Image($thumbnail_url);
+			$thumbnail = new Image( $thumbnail_url );
 
-			$post = new Post($url);
-			$post->setTitle($title);
-			$post->setDescription($description);
-			$post->setThumbnail($thumbnail);
+			$post = new Post( $url );
+			$post->setTitle( $title );
+			$post->setDescription( $description );
+			$post->setThumbnail( $thumbnail );
 			return $post;
 		});
 
 		$url_page = Str::createUrlValid( $paged, $this->siteUrl );
 
-		$page = new Page($url_page);
-		$page->setPosts($posts);
+		$page = new Page( $url_page );
+		$page->setPosts( $posts );
 		return $page;
 	}
 }

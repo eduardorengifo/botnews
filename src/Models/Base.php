@@ -6,7 +6,8 @@ namespace BotNews\Models;
  * Class Base
  * @package BotNews\Models
  */
-class Base {
+class Base
+{
 	/**
 	 * @var string
 	 */
@@ -22,14 +23,14 @@ class Base {
 	 *
 	 * @param string $url
 	 */
-	public function __construct( $url ) {
-		if ( filter_var($url, FILTER_VALIDATE_URL) )
-		{
+	public function __construct( $url )
+	{
+		if ( filter_var( $url, FILTER_VALIDATE_URL ) ) {
 			$this->url = $url;
 			$parse_url = parse_url( $this->url );
 
 			if ( isset( $parse_url['path'] )
-			     &&  ! empty( $parse_url['path'] )) {
+			     &&  ! empty( $parse_url['path'] ) ) {
 				$this->slug = $parse_url['path'];
 			}
 		}
@@ -38,28 +39,32 @@ class Base {
 	/**
 	 * @return string
 	 */
-	public function getUrl() {
+	public function getUrl()
+	{
 		return $this->url;
 	}
 
 	/**
 	 * @param string $url
 	 */
-	public function setUrl( $url ) {
+	public function setUrl( $url )
+	{
 		$this->url = $url;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getSlug() {
+	public function getSlug()
+	{
 		return $this->slug;
 	}
 
 	/**
 	 * @param string $slug
 	 */
-	public function setSlug( $slug ) {
+	public function setSlug( $slug )
+	{
 		$this->slug = $slug;
 	}
 }

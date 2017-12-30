@@ -9,7 +9,8 @@ use BotNews\Models\Post;
  * Class BotNews
  * @package BotNews
  */
-interface BotNews {
+interface BotNews
+{
 	/**
 	 * @param string $slug
 	 *
