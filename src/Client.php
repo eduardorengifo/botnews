@@ -47,7 +47,9 @@ class Client extends \Goutte\Client {
 	 */
 	public function getJsonLD($crawler) {
 		$jsonLD = $crawler->filter('script[type="application/ld+json"]')->first()->text();
+		$jsonLD = str_replace( "&quot;", '\"', $jsonLD);
 		$jsonLD = html_entity_decode( $jsonLD );
+		$jsonLD = str_replace("&nbsp;", ' ', $jsonLD);
 		$jsonLD = json_decode ($jsonLD , TRUE);
 		return $jsonLD;
 	}
