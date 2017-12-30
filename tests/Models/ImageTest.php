@@ -60,8 +60,6 @@ class ImageTest extends TestCase
 	public function tearDown()
 	{
 		parent::tearDown();
-
-		$this->image = new Image(null);
 	}
 
 	/** @test */
