@@ -20,7 +20,7 @@ class Rpp extends Client implements BotNews
     /**
      * @var string
      */
-    protected $siteUrl = 'http://rpp.pe';
+    protected $siteUrl = 'https://rpp.pe';
 
     /**
      * @param string $slug

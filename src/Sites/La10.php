@@ -16,7 +16,7 @@ class La10 extends Client implements BotNews
     /**
      * @var string
      */
-    protected $siteUrl = 'http://la10.rpp.pe';
+    protected $siteUrl = 'https://la10.rpp.pe';
 
     /**
      * @param string $slug
