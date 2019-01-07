@@ -1,29 +1,29 @@
 {
-    "name": "eduardorengifo/botnews",
-    "description": "Bot News",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Eduardo Rengifo",
-            "email": "eduardorengifo5@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.5.0",
-        "fabpot/goutte": "^3.2"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "4.8.36"
-    },
-    "autoload": {
-        "psr-4": {
-            "BotNews\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
+  "name": "eduardorengifo/botnews",
+  "description": "Bot News",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eduardo Rengifo",
+      "email": "eduardorengifo5@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "fabpot/goutte": "^3.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.36"
+  },
+  "autoload": {
+    "psr-4": {
+      "BotNews\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
 }

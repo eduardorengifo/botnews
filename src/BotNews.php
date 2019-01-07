@@ -11,17 +11,17 @@ use BotNews\Models\Post;
  */
 interface BotNews
 {
-	/**
-	 * @param string $slug
-	 *
-	 * @return Post
-	 */
-	public function getPost( $slug );
+    /**
+     * @param string $slug
+     *
+     * @return Post
+     */
+    public function getPost( $slug );
 
-	/**
-	 * @param mixed $paged
-	 *
-	 * @return Page
-	 */
-	public function getPage( $paged = 1 );
+    /**
+     * @param mixed $paged
+     *
+     * @return Page
+     */
+    public function getPage( $paged = 1 );
 }
