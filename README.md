@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/eduardorengifo/botnews.svg?branch=master)](https://travis-ci.org/eduardorengifo/botnews)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Packagist Pre Release](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/eduardorengifo/botnews)
+[![Packagist Pre Release](https://img.shields.io/badge/packagist-v1.0.1-orange.svg)](https://packagist.org/packages/eduardorengifo/botnews)
 [![PHP from Packagist](https://img.shields.io/badge/PHP-%5E5.5.0-blue.svg)]()
 
 Botnews is a small PHP script to extract news from websites.
